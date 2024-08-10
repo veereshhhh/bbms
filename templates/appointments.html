@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Manage Appointments</h2>
+    <form method="POST">
+        <label>Donor:</label>
+        <select name="donor_id" required>
+            {% for donor in donors %}
+                <option value="{{ donor.id }}">{{ donor.name }} ({{ donor.blood_type }})</option>
+            {% endfor %}
+        </select>
+        <label>Appointment Date:</label>
+        <input type="date" name="appointment_date" required>
+        <button type="submit">Schedule Appointment</button>
+    </form>
+
+    <h3>Upcoming Appointments</h3>
+    <ul>
+        {% for appointment in appointments %}
+            <li>{{ appointment.name }} ({{ appointment.blood_type }}), Appointment Date: {{ appointment.appointment_date }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

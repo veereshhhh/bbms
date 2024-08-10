@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Eligibility Check</h2>
+    <p>{{ status }}</p>
+    <a href="{{ url_for('donors') }}">Back to Donor Management</a>
+{% endblock %}

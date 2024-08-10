@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Manage Donors</h2>
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Blood Type:</label>
+        <input type="text" name="blood_type" required>
+        <label>Age:</label>
+        <input type="number" name="age" required>
+        <label>Last Donation Date:</label>
+        <input type="date" name="last_donation_date" required>
+        <button type="submit">Add Donor</button>
+    </form>
+
+    <h3>Donor List</h3>
+    <ul>
+        {% for donor in donors %}
+            <li>{{ donor.name }} ({{ donor.blood_type }}), Age: {{ donor.age }}, Last Donation: {{ donor.last_donation_date }}
+                <a href="{{ url_for('check_eligibility', donor_id=donor.id) }}">Check Eligibility</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
